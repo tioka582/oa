@@ -44,6 +44,21 @@
             "position": 3,
             "thumbnail": "https://i.ytimg.com/vi/flsGOtJgUD0/hqdefault.jpg",
             "video": "https://youtu.be/flsGOtJgUD0"
+        },
+        {
+            "id": 99999999,
+            "name": "New Level",
+            "creator": "Creator Name",
+            "verifier": "Verifier Name",
+            "password": "Free Copy",
+            "length": "2:30",
+            "version": "2.2",
+            "fullPoints": 850,
+            "listPercent": 60,
+            "listPoints": 400,
+            "position": 4,
+            "thumbnail": "https://i.ytimg.com/vi/flsGOtJgUD0/hqdefault.jpg",
+            "video": "https://youtu.be/flsGOtJgUD0"
         }
     ]
-}
+}       
