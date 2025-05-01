@@ -2,63 +2,96 @@
     "levels": [
         {
             "id": 86407629,
-            "name": "Tidal Wave",
-            "creator": "OnilJnk",
-            "verifier": "Zolnik",
-            "password": "Free Copy",
-            "length": "3:01",
+            "name": "Cognition",
+            "creator": "Endlevel and benji8080",
+            "verifier": "Exectorr",
+            "password": "789123",
+            "length": "1:02",
             "version": "2.1",
             "fullPoints": 1000,
-            "listPercent": 56,
+            "listPercent": 52,
             "listPoints": 250,
             "position": 1,
-            "thumbnail": "https://i.ytimg.com/vi/Tlzh9FZq3XI/hqdefault.jpg",
-            "video": "https://youtu.be/Tlzh9FZq3XI"
+            "thumbnail": "https://i.ytimg.com/vi/byt5oLdU1HQ/maxresdefault.jpg",
+            "video": "https://youtu.be/byt5oLdU1HQ?si=w53EUQZSXanzmRhO"
         },
         {
-            "id": 12345678,
-            "name": "Nullscapes",
-            "creator": "Kiba",
-            "verifier": "Serponge",
-            "password": "No Copy",
-            "length": "2:45",
+            "id": 76159410,
+            "name": "Cosmic Cyclone",
+            "creator": "Zimnior12 and more",
+            "verifier": "Angyedz (compot1k)",
+            "password": "Free Copy",
+            "length": "1:57",
             "version": "2.1",
-            "fullPoints": 950,
-            "listPercent": 55,
-            "listPoints": 350,
+            "fullPoints": 812,
+            "listPercent": 58,
+            "listPoints": 203,
             "position": 2,
-            "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-            "video": "https://youtu.be/dQw4w9WgXcQ"
+            "thumbnail": "https://i.ytimg.com/vi/h7bzA4BwkA0/maxresdefault.jpg",
+            "video": "https://youtu.be/h7bzA4BwkA0?si=0wHoR9KSHV-zEgQw"
         },
         {
-            "id": 87654321,
-            "name": "BOOBAWAMBA",
-            "creator": "Akunakunn",
-            "verifier": "Technical",
-            "password": "Free Copy",
-            "length": "1:58",
+            "id": 42584142,
+            "name": "Bloodlust",
+            "creator": "Knobbelboy and more",
+            "verifier": "Angyedz (compot1k)",
+            "password": "121296",
+            "length": "2:50",
             "version": "2.1",
-            "fullPoints": 900,
-            "listPercent": 50,
-            "listPoints": 300,
+            "fullPoints": 719,
+            "listPercent": 48,
+            "listPoints": 179,
             "position": 3,
-            "thumbnail": "https://i.ytimg.com/vi/flsGOtJgUD0/hqdefault.jpg",
-            "video": "https://youtu.be/flsGOtJgUD0"
+            "thumbnail": "https://i.ytimg.com/vi/rerfPElxLsw/maxresdefault.jpg",
+            "video": "https://youtu.be/rerfPElxLsw?si=O7oRGK0LPURdp6Bo"
         },
         {
-            "id": 99999999,
-            "name": "New Level",
-            "creator": "Creator Name",
-            "verifier": "Verifier Name",
+            "id": 86412942,
+            "name": "Knights of Thunder",
+            "creator": "HangerLord",
+            "verifier": "Exectorr",
             "password": "Free Copy",
-            "length": "2:30",
-            "version": "2.2",
-            "fullPoints": 850,
-            "listPercent": 60,
-            "listPoints": 400,
+            "length": "1:12",
+            "version": "2.1",
+            "fullPoints": 660,
+            "listPercent": 52,
+            "listPoints": 165,
             "position": 4,
-            "thumbnail": "https://i.ytimg.com/vi/flsGOtJgUD0/hqdefault.jpg",
-            "video": "https://youtu.be/flsGOtJgUD0"
-        }
-    ]
-}       
+            "thumbnail": "https://i.ytimg.com/vi/KtjOpSuKjA8/sddefault.jpg",
+            "video": "https://youtube.com/watch?v=KtjOpSuKjA8",
+            "records": [
+                {
+                "user": "egrik_gd",
+                    "percent": 100,
+                    "hz": 144,
+                    "video": "https://youtu.be/sgfYeKi8OBo?si=MYT6kJTWNxz-5VZA",
+                    "date": "2024-12-01"
+                }
+            ]
+        },
+        { 
+            "id": 52919433,
+            "name": "Arctic Lights",
+            "creator": "Endlevel and iIiViRuZiIi",
+            "verifier": "Angyedz (compot1k)",
+            "password": "Free Copy",
+            "length": "1:01",
+            "version": "2.1",
+            "fullPoints": 617,
+            "listPercent": 52,
+            "listPoints": 154,
+            "position": 5,
+            "thumbnail": "https://i.ytimg.com/vi/Q0Gl0wkGLEc/maxresdefault.jpg",
+            "video": "https://youtu.be/Q0Gl0wkGLEc?si=CbxY50MvzBgFThKP",
+            "records": [
+                {
+                "user": "egrik_gd",
+                    "percent": 100,
+                    "hz": 144,
+                    "video": "https://youtu.be/34iUYybN-4w?si=rdb2g3Nt3yRjZjem",
+                    "date": "2025-01-25"
+                }
+            ]
+        }    
+    ]            
+}              
