@@ -16,6 +16,7 @@
             --border-color: #e0e0e0;
             --section-bg: #f0f0f0;
             --hover-bg: #e8e8e8;
+            --record-highlight: #e6f7ff;
         }
         
         .dark-theme {
@@ -28,6 +29,7 @@
             --border-color: #333333;
             --section-bg: #252525;
             --hover-bg: #2a2a2a;
+            --record-highlight: #1a3a4a;
         }
         
         body {
@@ -220,6 +222,9 @@
             color: var(--primary);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
         .info-grid {
@@ -255,6 +260,80 @@
             opacity: 0.9;
         }
         
+        /* Стили для рекордов */
+        .records-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .record-card {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            border-left: 3px solid var(--primary);
+            transition: background-color 0.2s;
+        }
+        
+        .record-card:hover {
+            background-color: var(--hover-bg);
+        }
+        
+        .record-card.verified {
+            background-color: var(--record-highlight);
+        }
+        
+        .record-user {
+            font-weight: 600;
+            min-width: 120px;
+            color: var(--primary);
+        }
+        
+        .record-details {
+            display: flex;
+            gap: 1.5rem;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+        
+        .record-percent {
+            color: var(--primary);
+            font-weight: bold;
+            min-width: 50px;
+        }
+        
+        .record-hz {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .record-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .record-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .record-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+        
+        .record-icon {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
         @media (max-width: 768px) {
             .demon-card {
                 flex-direction: column;
@@ -282,6 +361,18 @@
             .info-grid {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
+            }
+            
+            .record-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .record-details {
+                margin-left: 0;
+                width: 100%;
+                justify-content: space-between;
             }
         }
     </style>
@@ -338,6 +429,18 @@
                     <!-- Будет заполнено JavaScript -->
                 </div>
             </div>
+            
+            <!-- Секция рекордов -->
+            <div class="level-section">
+                <h2 class="section-title">
+                    <i class="fas fa-trophy"></i>
+                    <span id="recordsTitle">Records</span>
+                    <span id="recordsCount" style="font-size: 0.9rem; color: var(--text-secondary);"></span>
+                </h2>
+                <div class="records-container" id="recordsContainer">
+                    <!-- Рекорды будут загружены через JavaScript -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -357,6 +460,9 @@
         const detailThumbnail = document.getElementById('detailThumbnail');
         const levelInfoGrid = document.getElementById('levelInfoGrid');
         const scoresGrid = document.getElementById('scoresGrid');
+        const recordsContainer = document.getElementById('recordsContainer');
+        const recordsTitle = document.getElementById('recordsTitle');
+        const recordsCount = document.getElementById('recordsCount');
 
         // Данные уровней
         let levelsData = [];
@@ -451,6 +557,44 @@
                 <div class="info-label">Score (${level.listPercent}%):</div>
                 <div class="info-value">${level.listPoints}</div>
             `;
+            
+            // Загружаем рекорды
+            loadRecords(level);
+        }
+
+        // Загрузка рекордов
+        function loadRecords(level) {
+            if (level.records && level.records.length > 0) {
+                // Сортируем по проценту (от большего к меньшему)
+                const sortedRecords = [...level.records].sort((a, b) => b.percent - a.percent);
+                
+                recordsCount.textContent = `(${sortedRecords.length})`;
+                recordsTitle.textContent = "Records";
+                
+                recordsContainer.innerHTML = sortedRecords.map((record, index) => `
+                    <div class="record-card ${record.percent === 100 ? 'verified' : ''}">
+                        <span class="record-user">${record.user}</span>
+                        <div class="record-details">
+                            <span class="record-percent">${record.percent}%</span>
+                            <span class="record-hz">
+                                <i class="fas fa-tachometer-alt record-icon"></i>
+                                ${record.hz}Hz
+                            </span>
+                            ${record.date ? `<span class="record-date">${record.date}</span>` : ''}
+                            ${record.video ? `
+                                <a href="${record.video}" target="_blank" class="record-link">
+                                    <i class="fas fa-video record-icon"></i>
+                                    Proof
+                                </a>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                recordsCount.textContent = "";
+                recordsTitle.textContent = "Records";
+                recordsContainer.innerHTML = `<div style="color: var(--text-secondary);">No records yet</div>`;
+            }
         }
 
         // Показать список уровней
