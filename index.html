@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GD Demon List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: #f8f8f8;
+            --primary: #000000;
+            --text: #333333;
+            --text-secondary: #666666;
+            --header-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --section-bg: #f0f0f0;
+            --hover-bg: #e8e8e8;
+        }
+        
+        .dark-theme {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --primary: #ffffff;
+            --text: #e0e0e0;
+            --text-secondary: #b0b0b0;
+            --header-bg: #000000;
+            --border-color: #333333;
+            --section-bg: #252525;
+            --hover-bg: #2a2a2a;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .theme-toggle, .view-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Стили для списка демонов */
+        #demonList {
+            display: block;
+        }
+        
+        .demon-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            gap: 1rem;
+        }
+        
+        .demon-card:hover {
+            background-color: var(--hover-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .list-thumbnail {
+            width: 100px;
+            height: 75px;
+            border-radius: 4px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .list-thumbnail:hover {
+            transform: scale(1.03);
+        }
+        
+        .list-position {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .list-info {
+            flex-grow: 1;
+        }
+        
+        .list-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+        }
+        
+        .list-creator {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        /* Стили для детальной страницы */
+        #levelDetails {
+            display: none;
+        }
+        
+        .level-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .detail-thumbnail {
+            width: 200px;
+            height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 1px solid var(--border-color);
+        }
+        
+        .detail-thumbnail:hover {
+            transform: scale(1.03);
+        }
+        
+        .position-badge {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .level-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .level-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .level-section {
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+        }
+        
+        .info-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .info-value {
+            font-weight: 500;
+        }
+        
+        .back-button {
+            background: var(--primary);
+            color: var(--bg-color);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.2s;
+        }
+        
+        .back-button:hover {
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .demon-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .list-thumbnail {
+                width: 100%;
+                height: auto;
+                max-height: 150px;
+            }
+            
+            .level-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .detail-thumbnail {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">DEMONLIST</div>
+            <div class="nav-links">
+                <a href="#">Main List</a>
+                <a href="#">Extended List</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="view-toggle" id="viewToggle" style="display: none;">
+                    <i class="fas fa-list"></i> List View
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Основной список демонов -->
+        <div id="demonList">
+            <!-- Уровни будут загружены через JavaScript -->
+            <div class="loading-message">Loading levels...</div>
+        </div>
+        
+        <!-- Детальная страница уровня -->
+        <div id="levelDetails">
+            <button class="back-button" id="backButton">
+                <i class="fas fa-arrow-left"></i> Back to list
+            </button>
+            
+            <div class="level-header">
+                <div class="position-badge" id="detailPosition">#1</div>
+                <img id="detailThumbnail" src="" class="detail-thumbnail" alt="Level thumbnail">
+                <div>
+                    <h1 class="level-title" id="detailName">Level Name</h1>
+                    <p class="level-subtitle" id="detailSubtitle">Verified by Verifier, created by Creator</p>
+                </div>
+            </div>
+            
+            <div class="level-section">
+                <h2 class="section-title">Level Info</h2>
+                <div class="info-grid" id="levelInfoGrid">
+                    <!-- Будет заполнено JavaScript -->
+                </div>
+            </div>
+            
+            <div class="level-section">
+                <h2 class="section-title">Scores</h2>
+                <div class="info-grid" id="scoresGrid">
+                    <!-- Будет заполнено JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Элементы DOM
+        const demonList = document.getElementById('demonList');
+        const levelDetails = document.getElementById('levelDetails');
+        const backButton = document.getElementById('backButton');
+        const viewToggle = document.getElementById('viewToggle');
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Элементы детальной страницы
+        const detailPosition = document.getElementById('detailPosition');
+        const detailName = document.getElementById('detailName');
+        const detailSubtitle = document.getElementById('detailSubtitle');
+        const detailThumbnail = document.getElementById('detailThumbnail');
+        const levelInfoGrid = document.getElementById('levelInfoGrid');
+        const scoresGrid = document.getElementById('scoresGrid');
+
+        // Данные уровней
+        let levelsData = [];
+
+        // Загрузка данных из JSON
+        async function loadLevelsData() {
+            try {
+                const response = await fetch('levels.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                levelsData = data.levels.sort((a, b) => a.position - b.position);
+                renderDemonList();
+            } catch (error) {
+                console.error('Error loading levels:', error);
+                demonList.innerHTML = `<div class="error-message">Failed to load levels. Please check your levels.json file.</div>`;
+            }
+        }
+
+        // Рендер списка уровней
+        function renderDemonList() {
+            if (levelsData.length === 0) {
+                demonList.innerHTML = `<div class="error-message">No levels found in levels.json</div>`;
+                return;
+            }
+
+            demonList.innerHTML = levelsData.map(level => `
+                <div class="demon-card" data-level="${level.position}">
+                    <div class="list-position">#${level.position}</div>
+                    <img src="${level.thumbnail}" class="list-thumbnail" alt="${level.name}">
+                    <div class="list-info">
+                        <div class="list-name">${level.name}</div>
+                        <div class="list-creator">by ${level.creator} | Verified by ${level.verifier}</div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Добавляем обработчики событий для карточек
+            document.querySelectorAll('.demon-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const position = parseInt(this.getAttribute('data-level'));
+                    const level = levelsData.find(l => l.position === position);
+                    loadLevelDetails(level);
+                    showLevelDetails();
+                });
+            });
+
+            // Обработчики для миниатюр
+            document.querySelectorAll('.list-thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const card = this.closest('.demon-card');
+                    const position = parseInt(card.getAttribute('data-level'));
+                    const level = levelsData.find(l => l.position === position);
+                    loadLevelDetails(level);
+                    showLevelDetails();
+                });
+            });
+        }
+
+        // Загрузка данных уровня на детальную страницу
+        function loadLevelDetails(level) {
+            if (!level) return;
+            
+            // Заполняем заголовок
+            detailPosition.textContent = `#${level.position}`;
+            detailName.textContent = level.name;
+            detailSubtitle.textContent = `Verified by ${level.verifier}, created by ${level.creator}`;
+            detailThumbnail.src = level.thumbnail;
+            detailThumbnail.alt = level.name;
+            detailThumbnail.dataset.level = level.position;
+            
+            // Заполняем информацию об уровне
+            levelInfoGrid.innerHTML = `
+                <div class="info-label">ID:</div>
+                <div class="info-value">${level.id}</div>
+                
+                <div class="info-label">Password:</div>
+                <div class="info-value">${level.password}</div>
+                
+                <div class="info-label">Length:</div>
+                <div class="info-value">${level.length}</div>
+                
+                <div class="info-label">Version:</div>
+                <div class="info-value">${level.version}</div>
+            `;
+            
+            // Заполняем баллы
+            scoresGrid.innerHTML = `
+                <div class="info-label">Score (100%):</div>
+                <div class="info-value">${level.fullPoints}</div>
+                
+                <div class="info-label">Score (${level.listPercent}%):</div>
+                <div class="info-value">${level.listPoints}</div>
+            `;
+        }
+
+        // Показать список уровней
+        function showDemonList() {
+            demonList.style.display = 'block';
+            levelDetails.style.display = 'none';
+            viewToggle.style.display = 'none';
+        }
+
+        // Показать детали уровня
+        function showLevelDetails() {
+            demonList.style.display = 'none';
+            levelDetails.style.display = 'block';
+            viewToggle.style.display = 'block';
+        }
+
+        // Обработчик для большой обложки
+        detailThumbnail.addEventListener('click', function() {
+            const currentLevelPos = parseInt(this.dataset.level);
+            const level = levelsData.find(l => l.position === currentLevelPos);
+            if (level && level.video) {
+                window.open(level.video, '_blank');
+            }
+        });
+        
+        // Кнопка "Назад"
+        backButton.addEventListener('click', showDemonList);
+        viewToggle.addEventListener('click', showDemonList);
+        
+        // Переключение темы
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            const icon = themeToggle.querySelector('i');
+            
+            if (body.classList.contains('dark-theme')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Проверка сохранённой темы
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-theme');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        // Инициализация
+        loadLevelsData();
+    </script>
+</body>
+</html>

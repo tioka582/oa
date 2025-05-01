@@ -1,0 +1,49 @@
+{
+    "levels": [
+        {
+            "id": 86407629,
+            "name": "Tidal Wave",
+            "creator": "OnilJnk",
+            "verifier": "Zolnik",
+            "password": "Free Copy",
+            "length": "3:01",
+            "version": "2.1",
+            "fullPoints": 1000,
+            "listPercent": 56,
+            "listPoints": 250,
+            "position": 1,
+            "thumbnail": "https://i.ytimg.com/vi/Tlzh9FZq3XI/hqdefault.jpg",
+            "video": "https://youtu.be/Tlzh9FZq3XI"
+        },
+        {
+            "id": 12345678,
+            "name": "Nullscapes",
+            "creator": "Kiba",
+            "verifier": "Serponge",
+            "password": "No Copy",
+            "length": "2:45",
+            "version": "2.1",
+            "fullPoints": 950,
+            "listPercent": 55,
+            "listPoints": 350,
+            "position": 2,
+            "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+            "video": "https://youtu.be/dQw4w9WgXcQ"
+        },
+        {
+            "id": 87654321,
+            "name": "BOOBAWAMBA",
+            "creator": "Akunakunn",
+            "verifier": "Technical",
+            "password": "Free Copy",
+            "length": "1:58",
+            "version": "2.1",
+            "fullPoints": 900,
+            "listPercent": 50,
+            "listPoints": 300,
+            "position": 3,
+            "thumbnail": "https://i.ytimg.com/vi/flsGOtJgUD0/hqdefault.jpg",
+            "video": "https://youtu.be/flsGOtJgUD0"
+        }
+    ]
+}
